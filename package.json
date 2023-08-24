@@ -45,6 +45,7 @@
     "stylelint-less": "^1.0.6",
     "stylelint-order": "^6.0.3",
     "vite": "^4.3.9",
+    "vite-plugin-qiankun": "^1.0.15",
     "vue-eslint-parser": "^9.3.0"
   },
   "husky": {

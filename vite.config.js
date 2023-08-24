@@ -1,13 +1,22 @@
 import { resolve } from 'path';
 import { defineConfig, loadEnv } from 'vite';
 import vue2 from '@vitejs/plugin-vue2';
+import qiankun from 'vite-plugin-qiankun';
 
+const PACKAGE_NAME = process.env.npm_package_name || 'vite-vue2-js-start';
+// 是否是开发环境
+const IS_DEV = process.env.NODE_ENV !== 'production';
 export default ({ mode }) => {
   const { VITE_PORT, VITE_BASE_URL } = loadEnv(mode, process.cwd());
 
   return defineConfig({
     base: VITE_BASE_URL,
-    plugins: [vue2()],
+    plugins: [
+      vue2(),
+      qiankun(PACKAGE_NAME, {
+        useDevMode: IS_DEV,
+      }),
+    ],
     resolve: {
       alias: {
         '@': resolve(__dirname, 'src'),
