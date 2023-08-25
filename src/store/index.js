@@ -1,16 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import counter from './modules/counter';
 
-const files = import.meta.glob('./modules/*.js', {
-  eager: true,
-});
-
-const modules = [];
-Object.keys(files).forEach((key) => {
-  const moduleName = key.substring(key.lastIndexOf('/') + 1, key.lastIndexOf('.js'));
-  modules[moduleName] = files[key].default;
-});
-
+const modules = [counter];
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
